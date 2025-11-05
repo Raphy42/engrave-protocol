@@ -1,0 +1,35 @@
+{
+	"name": "hackathon",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/david-dacruz/engrave-protocol.git"
+	},
+	"keywords": [
+		"x402",
+		"bitcoin",
+		"ordinals",
+		"solana",
+		"hackathon",
+		"AI"
+	],
+	"author": "David Dacruz",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/david-dacruz/engrave-protocol/issues"
+	},
+	"homepage": "https://github.com/david-dacruz/engrave-protocol#readme",
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"express": "^5.1.0",
+		"nodemon": "^3.1.10",
+		"x402-solana": "^0.1.3"
+	}
+}
