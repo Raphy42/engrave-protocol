@@ -31,6 +31,10 @@ const requiredEnvVars = {
 	PORT: process.env.PORT,
 };
 
+// Optional environment variables with defaults
+const FACILITATOR_URL = process.env.FACILITATOR_URL || 'https://facilitator.payai.network';
+const X402_NETWORK = process.env.X402_NETWORK || 'solana-devnet';
+
 // Validate all required environment variables
 for (const [key, value] of Object.entries(requiredEnvVars)) {
 	if (!value) {
@@ -72,8 +76,8 @@ export const config = {
 		port: parsedPort,
 	},
 	x402: {
-		network: 'solana-devnet',
-		facilitatorUrl: 'https://facilitator.paypai.network',
+		network: X402_NETWORK,
+		facilitatorUrl: FACILITATOR_URL,
 		usdc: {
 			// USDC token address on Solana devnet
 			address: '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU',
