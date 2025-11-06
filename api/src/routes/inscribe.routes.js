@@ -20,6 +20,8 @@ const inscribeHandler = async (req, res) => {
 		// Extract payment header from request
 		const paymentHeader = x402Service.extractPayment(req.headers);
 
+		console.log('[INSCRIBE] paymentHeader present?', !!paymentHeader);
+
 		// Create payment requirements: $1.00 USDC
 		const paymentRequirements = await x402Service.createPaymentRequirements(
 			1000000, // $1.00 in USDC (6 decimals)
@@ -33,11 +35,15 @@ const inscribeHandler = async (req, res) => {
 			return res.status(response.status).json(response.body);
 		}
 
+		console.log('paymentRequirements', paymentRequirements);
+
 		// Verify the payment
 		const verified = await x402Service.verifyPayment(
 			paymentHeader,
 			paymentRequirements
 		);
+
+		console.log('verified', verified);
 
 		if (!verified) {
 			return res.status(402).json({
