@@ -1,4 +1,19 @@
 // @ts-check
+/**
+ * Inscription Routes (BETA)
+ *
+ * This module contains beta endpoints for creating Bitcoin Ordinals inscriptions.
+ * All routes are available at /api/beta/inscribe and are actively being developed.
+ *
+ * BETA Status: These endpoints are functional but may change based on feedback.
+ *
+ * Features:
+ * - Single inscription creation
+ * - Batch inscription processing
+ * - x402 payment-protected operations
+ *
+ * @beta All endpoints in this module are in beta and subject to change
+ */
 import express from 'express';
 import {agentService} from '../services/agent.service.js';
 import {x402Service} from '../services/x402.service.js';
@@ -10,6 +25,54 @@ const router = express.Router();
  * @typedef {import('express').Response} Response
  */
 
+/**
+ * @beta This endpoint is in beta and subject to change
+ * @swagger
+ * /api/beta/inscribe:
+ *   get:
+ *     tags:
+ *       - Inscription (Beta)
+ *     summary: "[BETA] Create Bitcoin Ordinals inscription"
+ *     description: "🔐 Create a Bitcoin Ordinals inscription with x402 payment required. **Cost: $1.00 USDC**"
+ *     security:
+ *       - x402: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *                 description: Content to inscribe (text or data)
+ *               contentType:
+ *                 type: string
+ *                 description: MIME type of the content
+ *                 example: "text/plain"
+ *               creator:
+ *                 type: string
+ *                 description: Bitcoin address of the inscription creator
+ *     responses:
+ *       '200':
+ *         description: Inscription created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/OrdinalInscription'
+ *       '402':
+ *         description: Payment required
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/PaymentRequired'
+ *       '500':
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 /**
  * GET /api/inscribe
  * x402 payment-protected endpoint for Bitcoin Ordinals inscriptions

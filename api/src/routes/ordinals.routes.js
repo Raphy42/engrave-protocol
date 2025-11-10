@@ -1,4 +1,20 @@
 // @ts-check
+/**
+ * Ordinals Routes (BETA)
+ *
+ * This module contains beta endpoints for querying and managing Bitcoin Ordinals inscriptions.
+ * All routes are available at /api/beta/ordinals/* and are actively being developed.
+ *
+ * BETA Status: These endpoints are functional but may change based on feedback.
+ *
+ * Features:
+ * - Get inscription details by ID
+ * - List inscriptions by Bitcoin address
+ * - Batch inscription creation
+ * - Ordinals statistics
+ *
+ * @beta All endpoints in this module are in beta and subject to change
+ */
 import express from 'express';
 import { agentService } from '../services/agent.service.js';
 import { bitcoinService } from '../services/bitcoin.service.js';
@@ -11,6 +27,47 @@ const router = express.Router();
  * @typedef {import('express').Response} Response
  */
 
+/**
+ * @beta This endpoint is in beta and subject to change
+ * @swagger
+ * /api/beta/ordinals/{id}:
+ *   get:
+ *     tags:
+ *       - Ordinals (Beta)
+ *     summary: "[BETA] Get inscription details by ID"
+ *     description: "[BETA] Retrieve detailed information about a specific Bitcoin Ordinals inscription"
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: Inscription ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Inscription details retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 inscription:
+ *                   type: object
+ *       '400':
+ *         description: Invalid inscription ID
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       '500':
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 /**
  * GET /api/ordinals/:id
  * Get inscription details by ID
@@ -42,6 +99,53 @@ const getInscriptionHandler = async (req, res) => {
     }
 };
 
+/**
+ * @beta This endpoint is in beta and subject to change
+ * @swagger
+ * /api/beta/ordinals/address/{address}:
+ *   get:
+ *     tags:
+ *       - Ordinals (Beta)
+ *     summary: "[BETA] List inscriptions by Bitcoin address"
+ *     description: "[BETA] Retrieve all Bitcoin Ordinals inscriptions owned by a Bitcoin address"
+ *     parameters:
+ *       - name: address
+ *         in: path
+ *         required: true
+ *         description: Bitcoin address to query inscriptions for
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Inscriptions retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 address:
+ *                   type: string
+ *                 inscriptions:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                 count:
+ *                   type: integer
+ *       '400':
+ *         description: Invalid Bitcoin address
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       '500':
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 /**
  * GET /api/ordinals/address/:address
  * List inscriptions by Bitcoin address
@@ -83,6 +187,85 @@ const listInscriptionsByAddressHandler = async (req, res) => {
     }
 };
 
+/**
+ * @beta This endpoint is in beta and subject to change
+ * @swagger
+ * /api/beta/ordinals/batch:
+ *   post:
+ *     tags:
+ *       - Ordinals (Beta)
+ *     summary: "[BETA] Create batch Bitcoin Ordinals inscriptions"
+ *     description: "[BETA] 🔐 Create multiple Bitcoin Ordinals inscriptions in a single transaction with x402 payment required. **Cost: $1.00 USDC per inscription (max 10 per batch)**"
+ *     security:
+ *       - x402: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - inscriptions
+ *             properties:
+ *               inscriptions:
+ *                 type: array
+ *                 maxItems: 10
+ *                 minItems: 1
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     content:
+ *                       type: string
+ *                       description: Content to inscribe
+ *                     contentType:
+ *                       type: string
+ *                       description: MIME type of the content
+ *                     creator:
+ *                       type: string
+ *                       description: Bitcoin address of the inscription creator
+ *     responses:
+ *       '200':
+ *         description: Batch inscriptions created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                 errors:
+ *                   type: array
+ *                 totalProcessed:
+ *                   type: integer
+ *                 successCount:
+ *                   type: integer
+ *                 errorCount:
+ *                   type: integer
+ *       '400':
+ *         description: Invalid request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       '402':
+ *         description: Payment required
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/PaymentRequired'
+ *       '500':
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 /**
  * POST /api/ordinals/batch
  * x402 payment-protected endpoint for batch Bitcoin Ordinals inscriptions
@@ -186,6 +369,51 @@ const batchInscribeHandler = async (req, res) => {
     }
 };
 
+/**
+ * @beta This endpoint is in beta and subject to change
+ * @swagger
+ * /api/beta/ordinals/stats:
+ *   get:
+ *     tags:
+ *       - Ordinals (Beta)
+ *     summary: "[BETA] Get ordinals statistics"
+ *     description: "[BETA] Get statistics about Bitcoin Ordinals and supported content types. **FREE - No payment required**"
+ *     responses:
+ *       '200':
+ *         description: Statistics retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 stats:
+ *                   type: object
+ *                   properties:
+ *                     totalInscriptions:
+ *                       type: integer
+ *                     totalSize:
+ *                       type: integer
+ *                     averageSize:
+ *                       type: integer
+ *                     supportedContentTypes:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                     maxInscriptionSize:
+ *                       type: integer
+ *                     network:
+ *                       type: string
+ *                     pricing:
+ *                       type: object
+ *       '500':
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 /**
  * GET /api/ordinals/stats
  * Get general statistics about inscriptions (free endpoint)
