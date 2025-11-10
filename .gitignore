@@ -56,3 +56,13 @@ yarn.lock
 # Development directories
 .claude/
 Docs/
+
+# Wallet files (SECURITY: Never commit private keys!)
+wallet.txt
+*_wallet.json
+mcp_wallet.json
+solana_wallet.json
+*.wallet
+*.key
+*.pem
+*.keypair
