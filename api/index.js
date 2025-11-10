@@ -1,4 +1,5 @@
 // @ts-check
+import 'dotenv/config'; // Load .env FIRST before any other imports
 import {config} from './src/config/env.js';
 import app from './src/app.js';
 

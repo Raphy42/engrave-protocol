@@ -1,44 +1,57 @@
 // @ts-check
 import express from 'express';
-import inscribeRoutes from './inscribe.routes.js';
-import ordinalsRoutes from './ordinals.routes.js';
-import bitcoinRoutes from './bitcoin.routes.js';
+import mempoolRoutes from './mempool.routes.js';
 
 const router = express.Router();
 
 /**
- * Root API routes
+ * Root API routes with versioning
+ *
+ * API Structure:
+ * - /api/v1/mempool/* - Production-ready mempool endpoints with x402 payments
  */
 
-// Health check endpoint
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     tags:
+ *       - Health
+ *     summary: API health check
+ *     description: Check the health and status of the Engrave Protocol API
+ *     responses:
+ *       '200':
+ *         description: API is healthy
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/HealthResponse'
+ */
 router.get('/health', (req, res) => {
 	res.json({
 		status: 'healthy',
-		service: 'Engrave Protocol MCP Server',
+		service: 'Engrave Protocol - Mempool Bridge',
 		timestamp: new Date().toISOString(),
 		version: '1.0.0',
 		features: {
-			bitcoinWallet: true,
-			ordinalsInscription: true,
+			mempoolBridge: true,
 			mcpServer: true,
 			x402Payments: true,
 		},
 		endpoints: {
-			inscription: '/api/inscribe',
-			ordinals: '/api/ordinals/*',
-			bitcoin: '/api/bitcoin/*',
-			health: '/health',
+			v1: {
+				mempool: '/api/v1/mempool/*',
+			},
+			utility: {
+				health: '/health',
+				apiDocs: '/api-docs',
+				apiDocsJson: '/api-docs.json',
+			},
 		},
 	});
 });
 
-// Mount inscription routes
-router.use('/api', inscribeRoutes);
-
-// Mount ordinals routes
-router.use('/api/ordinals', ordinalsRoutes);
-
-// Mount bitcoin routes
-router.use('/api/bitcoin', bitcoinRoutes);
+// Mount v1 production routes
+router.use('/api/v1/mempool', mempoolRoutes);
 
 export default router;
