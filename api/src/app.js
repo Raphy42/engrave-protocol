@@ -1,6 +1,6 @@
 // @ts-check
 import express from 'express';
-import swaggerUi from 'swagger-ui-express';
+import {apiReference} from '@scalar/express-api-reference';
 import {corsMiddleware} from './middleware/cors.js';
 import {errorHandler, notFoundHandler} from './middleware/errorHandler.js';
 import {swaggerSpec} from './config/swagger.js';
@@ -19,14 +19,20 @@ app.use(express.urlencoded({extended: true}));
 // CORS middleware
 app.use(corsMiddleware);
 
-// Mount Swagger UI at /api-docs
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-	customCss: '.topbar { display: none; } .swagger-ui { --topbar-bg: #1e1e1e; }',
-	customSiteTitle: 'Engrave Protocol API Documentation',
-	swaggerOptions: {
-		deepLinking: true,
-	},
-}));
+// Mount Scalar API Reference at /api-docs
+app.use(
+	'/api-docs',
+	apiReference({
+		spec: {
+			url: '/api-docs.json',
+		},
+		theme: 'dark',
+		title: 'Engrave Protocol API',
+		defaultHttpClient: {
+			targetKey: 'javascript',
+		},
+	}),
+);
 
 // Mount OpenAPI JSON spec at /api-docs.json
 app.get('/api-docs.json', (req, res) => {

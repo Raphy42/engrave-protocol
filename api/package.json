@@ -36,6 +36,7 @@
 	"homepage": "https://github.com/david-dacruz/engrave-protocol#readme",
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^0.5.0",
+		"@scalar/express-api-reference": "^0.8.24",
 		"@solana/web3.js": "^1.98.4",
 		"axios": "^1.7.9",
 		"bip32": "^4.0.0",
@@ -45,7 +46,6 @@
 		"dotenv": "^17.2.3",
 		"express": "^5.1.0",
 		"swagger-jsdoc": "^6.2.8",
-		"swagger-ui-express": "^5.0.1",
 		"tiny-secp256k1": "^2.2.3",
 		"tweetnacl": "^1.0.3",
 		"x402-axios": "^0.7.0",
