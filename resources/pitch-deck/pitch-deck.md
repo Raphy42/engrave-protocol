@@ -64,7 +64,8 @@ style: |
 <!-- _class: lead -->
 
 # **Engrave Protocol**
-## *Bridging AI Agents with Bitcoin's Settlement Layer*
+
+## _Bridging AI Agents with Bitcoin's Settlement Layer_
 
 Making the blockchain economy **agent-native**
 
@@ -146,28 +147,32 @@ AI agents are becoming **autonomous economic actors**
 # Real-World Use Cases
 
 ## 🤖 Autonomous Trading Bots
+
 Monitor network conditions • Optimize transaction timing
 
 ## 🔍 Blockchain Analytics Agents
+
 Track addresses • Detect patterns • Generate insights
 
 ## 💸 Payment Verification
+
 Verify transactions • Check confirmations • Monitor wallets
 
 ## 🌊 Mempool Intelligence
+
 Real-time fees • Transaction prediction • Network analysis
 
 ---
 
 # What Makes Us Different
 
-| Traditional APIs | **Engrave Protocol** |
-|-----------------|---------------------|
-| Manual integration | **Auto-discovery** |
-| Monthly subscriptions | **Pay-per-use** |
-| API keys & auth | **Payment IS auth** |
-| Fixed pricing | **Micro-transactions** |
-| Human-centric | **Agent-native** |
+| Traditional APIs      | **Engrave Protocol**   |
+| --------------------- | ---------------------- |
+| Manual integration    | **Auto-discovery**     |
+| Monthly subscriptions | **Pay-per-use**        |
+| API keys & auth       | **Payment IS auth**    |
+| Fixed pricing         | **Micro-transactions** |
+| Human-centric         | **Agent-native**       |
 
 ---
 
@@ -187,14 +192,17 @@ Real-time fees • Transaction prediction • Network analysis
 # Our Service Catalog
 
 ### 💎 **Premium Analytics** ($0.10 - $0.25)
+
 - Address information & transaction history
 - Block data & transaction details
 
 ### ⚡ **Micropayments** ($0.01)
+
 - Fee estimates
 - Mempool statistics
 
 ### 🆓 **Free Tier**
+
 - Block height queries
 
 **All prices in USDC, paid per request**
@@ -205,12 +213,12 @@ Real-time fees • Transaction prediction • Network analysis
 
 ## Today vs Tomorrow
 
-| **Today** | **Tomorrow** |
-|-----------|--------------|
+| **Today**                | **Tomorrow**              |
+| ------------------------ | ------------------------- |
 | Human → Manual discovery | **Agent → Auto-discover** |
-| Subscription billing | **Micropayments** |
-| API keys & auth | **Payment = Auth** |
-| Fixed costs | **Dynamic optimization** |
+| Subscription billing     | **Micropayments**         |
+| API keys & auth          | **Payment = Auth**        |
+| Fixed costs              | **Dynamic optimization**  |
 
 ---
 
@@ -259,15 +267,19 @@ Solana enables **true micropayments**
 # The Vision
 
 ## Phase 1 (Current)
+
 Bitcoin data bridge with x402 payments
 
 ## Phase 2
+
 Multi-chain aggregation
 
 ## Phase 3
+
 Agent marketplace
 
 ## Phase 4
+
 **Agent economy operating system**
 
 ---
@@ -378,15 +390,27 @@ Machine-to-machine payments
 
 # Roadmap
 
-## 🎯 Q1 2025
+## 🎯 Phase 1
 
-- **Mainnet Launch** - SOL/USDC payments go live
+- **Token Launch** - Build in public starts
+- **MVP Development and Stress Testing** - Final submission 11/11/25
+- **Solana x402 Hackathon** - Final submission 11/11/25
+
+## 🎯 Phase 2
+
+- **Engrave Protocol Digital Identity** - Rebrand + landing page
+- **Devnet Public Launch** - SOL/USDC payments go live
 - **20+ Bitcoin Endpoints** - Expanded data coverage
+- **AVAX Hackathon 11/28/25** - Cross-chain interoperability expansion
+
+## 🎯 Phase 3
+
+- **Mainnet Launch** - Payments go live
 - **Agent Marketplace Alpha** - Service discovery platform
 
-## 🎯 Q2 2025
+## 🎯 Phase 4
 
-- **Multi-chain Support** - Ethereum, other chains
+- **User growth focus** - Multi-chain Support and Partnerships
 - **Premium Analytics** - Advanced data tier
 - **Developer SDK** - Integration tools
 
@@ -422,8 +446,7 @@ Machine-to-machine payments
 
 # Thank You
 
-*Questions?*
+_Questions?_
 
 🌐 github.com/david-dacruz/engrave-protocol
 📧 Let's build the agent economy together
-
