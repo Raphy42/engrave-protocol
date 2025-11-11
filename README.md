@@ -91,31 +91,32 @@ npm run mcp:create-wallet
 
 ### 4. Configure Your MCP Client
 
-**For Claude Desktop**, edit your config file:
+**For Claude Code CLI**:
 
-**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-**Linux**: `~/.config/Claude/claude_desktop_config.json`
+```bash
+cd engrave-protocol/api
+claude mcp add engrave-protocol \
+  -e PORT=3000 \
+  -e TREASURY_WALLET_ADDRESS=your_solana_treasury_address \
+  -- sh -c "cd $(pwd) && node src/mcp/server.js"
+```
+
+**For Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 
 ```json
 {
   "mcpServers": {
     "engrave-protocol": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/engrave-protocol/api/src/mcp/server.js"],
+      "command": "sh",
+      "args": ["-c", "cd /ABSOLUTE/PATH/TO/engrave-protocol/api && node src/mcp/server.js"],
       "env": {
-        "TREASURY_WALLET_ADDRESS": "your_solana_treasury_address",
-        "BASE_API_URL": "http://localhost:3000",
-        "MCP_WALLET_FILE": "/ABSOLUTE/PATH/TO/engrave-protocol/api/mcp_wallet.json",
-        "X402_NETWORK": "solana-devnet",
-        "BITCOIN_NETWORK": "testnet"
+        "PORT": "3000",
+        "TREASURY_WALLET_ADDRESS": "your_solana_treasury_address"
       }
     }
   }
 }
 ```
-
-**Important**: Use absolute paths, not relative paths.
 
 ### 5. Test It!
 
@@ -256,17 +257,6 @@ curl http://localhost:3000/api/v1/mempool/height   # Free endpoint
 curl http://localhost:3000/api/v1/mempool/fees     # Paid endpoint (returns 402)
 ```
 
----
-
-## 📖 Documentation
-
-- **[Demo Presentation](demo/presentation.md)** - Marp slidedeck for hackathon
-- **[Demo PDF](demo/presentation.pdf)** - Exported PDF presentation
-- **[Interaction Examples](demo/interactions/)** - Real API test results
-- **[API Documentation](http://localhost:3000/api-docs)** - Redoc UI (when server running)
-
----
-
 ## 🔐 Security Notes
 
 - ⚠️ **Development Only**: Currently on Bitcoin testnet + Solana devnet
@@ -299,7 +289,7 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 - **GitHub**: https://github.com/david-dacruz/engrave-protocol
 - **Twitter**: https://x.com/engraveprotocol
-- **x402 Protocol**: https://docs.payai.network/x402
+- **x402 Protocol**: https://solana.com/developers/guides/getstarted/intro-to-x402
 - **MCP Protocol**: https://modelcontextprotocol.io
 - **USDC Faucet**: https://faucet.circle.com
 - **Mempool.space**: https://mempool.space
