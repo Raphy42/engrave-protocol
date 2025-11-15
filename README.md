@@ -292,6 +292,7 @@ Contributions welcome:
 
 ## 🔗 Links
 
+- **Landing page**: https://engrave-protocol.ai/
 - **GitHub**: https://github.com/david-dacruz/engrave-protocol
 - **Twitter**: https://x.com/engraveprotocol
 - **x402 Protocol**: https://solana.com/developers/guides/getstarted/intro-to-x402
