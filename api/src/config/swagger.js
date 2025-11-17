@@ -36,11 +36,11 @@ All paid endpoints require x402 payment headers for access.
 - All payments settled on Solana Devnet`,
 			contact: {
 				name: 'Engrave Protocol',
-				url: 'https://github.com/david-dacruz/engrave-protocol',
+				url: 'https://github.com/engrave-protocol/engrave-api',
 			},
 			license: {
 				name: 'MIT',
-				url: 'https://github.com/david-dacruz/engrave-protocol/blob/main/LICENSE',
+				url: 'https://github.com/engrave-protocol/engrave-api/blob/main/LICENSE',
 			},
 		},
 		servers: [
@@ -734,6 +734,238 @@ All paid endpoints require x402 payment headers for access.
 								},
 							},
 						},
+					},
+				},
+				// Phase 2 Schemas
+				AddressTxsChain: {
+					type: 'object',
+					required: ['success', 'address', 'transactions', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						address: { type: 'string' },
+						transactions: { type: 'array', items: { type: 'object' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				AddressPrefix: {
+					type: 'object',
+					required: ['success', 'prefix', 'data', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						prefix: { type: 'string' },
+						data: { type: 'array', items: { type: 'string' } },
+						network: { type: 'string' },
+					},
+				},
+				TxMerkleProof: {
+					type: 'object',
+					required: ['success', 'txid', 'proof', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						txid: { type: 'string' },
+						proof: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				TxOutspendSingle: {
+					type: 'object',
+					required: ['success', 'txid', 'vout', 'spent', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						txid: { type: 'string' },
+						vout: { type: 'integer' },
+						spent: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				TxRaw: {
+					type: 'object',
+					required: ['success', 'txid', 'raw', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						txid: { type: 'string' },
+						raw: { type: 'string' },
+						network: { type: 'string' },
+					},
+				},
+				TxsRecent: {
+					type: 'object',
+					required: ['success', 'transactions', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						transactions: { type: 'array', items: { type: 'object' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				BlockHeader: {
+					type: 'object',
+					required: ['success', 'hash', 'header', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hash: { type: 'string' },
+						header: { type: 'string' },
+						network: { type: 'string' },
+					},
+				},
+				BlockRaw: {
+					type: 'object',
+					required: ['success', 'hash', 'raw', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hash: { type: 'string' },
+						raw: { type: 'string' },
+						network: { type: 'string' },
+					},
+				},
+				BlockStatus: {
+					type: 'object',
+					required: ['success', 'hash', 'status', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hash: { type: 'string' },
+						status: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				BlockTxByIndex: {
+					type: 'object',
+					required: ['success', 'hash', 'index', 'transaction', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hash: { type: 'string' },
+						index: { type: 'integer' },
+						transaction: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				BlockTxids: {
+					type: 'object',
+					required: ['success', 'hash', 'txids', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hash: { type: 'string' },
+						txids: { type: 'array', items: { type: 'string' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				RecentBlocks: {
+					type: 'object',
+					required: ['success', 'blocks', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						blocks: { type: 'array', items: { type: 'object' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				BlocksTipHash: {
+					type: 'object',
+					required: ['success', 'hash', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hash: { type: 'string' },
+						network: { type: 'string' },
+					},
+				},
+				MempoolRecent: {
+					type: 'object',
+					required: ['success', 'transactions', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						transactions: { type: 'array', items: { type: 'object' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				MempoolTxids: {
+					type: 'object',
+					required: ['success', 'txids', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						txids: { type: 'array', items: { type: 'string' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				FeesCpfp: {
+					type: 'object',
+					required: ['success', 'fees', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						fees: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				MiningPools: {
+					type: 'object',
+					required: ['success', 'timeperiod', 'pools', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						timeperiod: { type: 'string' },
+						pools: { type: 'array', items: { type: 'object' } },
+						network: { type: 'string' },
+					},
+				},
+				MiningPool: {
+					type: 'object',
+					required: ['success', 'slug', 'pool', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						slug: { type: 'string' },
+						pool: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				MiningPoolHashrate: {
+					type: 'object',
+					required: ['success', 'slug', 'hashrate', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						slug: { type: 'string' },
+						hashrate: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				MiningPoolBlocks: {
+					type: 'object',
+					required: ['success', 'slug', 'blocks', 'count', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						slug: { type: 'string' },
+						blocks: { type: 'array', items: { type: 'object' } },
+						count: { type: 'integer' },
+						network: { type: 'string' },
+					},
+				},
+				MiningHashrate: {
+					type: 'object',
+					required: ['success', 'hashrate', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						hashrate: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				MiningDifficulty: {
+					type: 'object',
+					required: ['success', 'difficulty', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						difficulty: { type: 'object' },
+						network: { type: 'string' },
+					},
+				},
+				MiningBlockFees: {
+					type: 'object',
+					required: ['success', 'blockHeight', 'fees', 'network'],
+					properties: {
+						success: { type: 'boolean', example: true },
+						blockHeight: { type: 'integer' },
+						fees: { type: 'object' },
+						network: { type: 'string' },
 					},
 				},
 			},

@@ -107,5 +107,173 @@ export default {
 			category: 'fee-estimation',
 			micropayment: true,
 		},
+		// Phase 2: Address Endpoints
+		addressTxsChain: {
+			price: 0.01,
+			description: 'Get confirmed transaction history only',
+			category: 'address-analytics',
+			micropayment: true,
+		},
+		addressTxsChainFrom: {
+			price: 0.01,
+			description: 'Get confirmed transaction history from specific transaction',
+			category: 'address-analytics',
+			micropayment: true,
+		},
+		addressPrefix: {
+			price: 0.01,
+			description: 'Search addresses by prefix',
+			category: 'address-analytics',
+			micropayment: true,
+		},
+		// Phase 2: Transaction Endpoints
+		txMerkleProof: {
+			price: 0.01,
+			description: 'Get merkle inclusion proof for transaction',
+			category: 'transaction-verification',
+			micropayment: true,
+		},
+		txMerkleblockProof: {
+			price: 0.01,
+			description: 'Get merkleblock proof for transaction',
+			category: 'transaction-verification',
+			micropayment: true,
+		},
+		txOutspendSingle: {
+			price: 0.01,
+			description: 'Check if specific transaction output is spent',
+			category: 'transaction-verification',
+			micropayment: true,
+		},
+		txRaw: {
+			price: 0.01,
+			description: 'Get raw transaction in binary format',
+			category: 'transaction-verification',
+			micropayment: true,
+		},
+		txsRecent: {
+			price: 0.01,
+			description: 'Get recent transactions',
+			category: 'transaction-verification',
+			micropayment: true,
+		},
+		// Phase 2: Block Endpoints
+		blockHeader: {
+			price: 0.01,
+			description: 'Get block header only',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blockRaw: {
+			price: 0.01,
+			description: 'Get raw block in binary format',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blockStatus: {
+			price: 0.01,
+			description: 'Get block confirmation status',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blockTxByIndex: {
+			price: 0.01,
+			description: 'Get specific transaction by index in block',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blockTxids: {
+			price: 0.01,
+			description: 'Get all transaction IDs in a block',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blocks: {
+			price: 0.01,
+			description: 'Get recent blocks',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blocksFromHeight: {
+			price: 0.01,
+			description: 'Get blocks starting from height',
+			category: 'blockchain-data',
+			micropayment: true,
+		},
+		blocksTipHash: {
+			price: 0.00,
+			description: 'Get latest block hash',
+			category: 'blockchain-data',
+			free: true,
+		},
+		// Phase 2: Mempool Endpoints
+		mempoolRecent: {
+			price: 0.01,
+			description: 'Get recent mempool transactions',
+			category: 'network-statistics',
+			micropayment: true,
+		},
+		mempoolTxids: {
+			price: 0.01,
+			description: 'Get all transaction IDs in mempool',
+			category: 'network-statistics',
+			micropayment: true,
+		},
+		// Phase 2: Fee Endpoints
+		feesCpfp: {
+			price: 0.01,
+			description: 'Child-Pays-For-Parent fee suggestions',
+			category: 'fee-estimation',
+			micropayment: true,
+		},
+		// Phase 2: Mining Endpoints
+		miningPools: {
+			price: 0.01,
+			description: 'List of mining pools',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningPoolsTimeperiod: {
+			price: 0.01,
+			description: 'Mining pools for specific timeperiod',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningPool: {
+			price: 0.01,
+			description: 'Specific mining pool information',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningPoolHashrate: {
+			price: 0.01,
+			description: 'Mining pool hashrate data',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningPoolBlocks: {
+			price: 0.01,
+			description: 'Blocks mined by specific pool',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningHashrate: {
+			price: 0.01,
+			description: 'Network hashrate statistics',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningDifficulty: {
+			price: 0.01,
+			description: 'Difficulty adjustment history',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
+		miningBlockFees: {
+			price: 0.01,
+			description: 'Fee details for specific block',
+			category: 'mining-analytics',
+			micropayment: true,
+		},
 	},
 };
